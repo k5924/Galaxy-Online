@@ -1,0 +1,53 @@
+{% extends "Home/base.html" %}
+{#extends the base.html page. This shows the relationship with the parent page base.html and this child page#}
+{% load static %}
+{#load css file to use for styling#}
+{% block css %}<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">{% endblock %}
+{#load css file as a link that can be read as a text or css file with reference to file location#}
+{#block css used to link to block element in parent page to this page#}
+{% block body %}
+{#start of body elements#}
+    <div class= "Container">
+        {# create div class called container #}
+        <h1 align="center">{% block title %}Galaxy Online{% endblock %}</h1>
+        {#open tag for heading to be aligned in center of page. opening block title used to show that#}
+        {#variable between block and endblock is used for title in parent page. endblock shows there is no more#}
+        {#content for the given variable. End tag for heading to show end of heading#}
+        <div id = "Buttons" align="center">
+            {# create div with id of buttons and align the div to center of page #}
+            <table border = "0">
+                {# create table with border that is not visible #}
+                <tr>
+                {%block content%}
+                {%endblock%}
+                    {# create first row for table #}
+                    <td>
+                        {# create first column for table #}
+                        <a class="button" href = "{% url 'admin:index' %}">Admin</a>
+                        {#create a button that links to the admin page. the url admin:index#}
+                        {#is used to identify the admin login page as it isnt a physical file#}
+                        {#opening and closing of the "a" tag shows the start and end of the linked button#}
+                    </td>
+                    {# end tag for column of table #}
+                    <td></td>
+                    {# create blank column for table #}
+                    <td>
+                        {#open tag for column of table#}
+                        <a class="button" href = "{% url 'Login' %}">Student</a>
+                        {#create a button that links to the login page. the url login#}
+                        {#links the button to the function in view called Login to display#}
+                        {#the relevant page. the opening and closing of the "a" tag shows the start and end#}
+                        {#of the linked button#}
+                    </td>
+                    {#end tag for column of table#}
+                </tr>
+                {#end tag for row of table#}
+            </table>
+            {#end tag for table#}
+        </div>
+        {#end tag for div#}
+    </div>
+    {#end tag for div#}
+{% endblock %}
+{#end of body elements#} 
+ 

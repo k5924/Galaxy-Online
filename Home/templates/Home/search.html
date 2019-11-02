@@ -1,0 +1,34 @@
+{%extends 'Home/Posts.html'%}
+{#extends the Posts.html page. This shows the relationship with the parent page Posts.html and this child page#}
+{%block content%}
+  <table bgcolor = white>
+    {#in a table with a white backgorund#}
+      <tbody>
+        <td>
+          {%if results%}
+          {#if there are results#}
+              {% for post in results %}
+              {#for every post in the results#}
+                <table border = 1>
+                  <tr>
+                    <td>
+                    <h2><a href="{% url 'PostDetail' pk=post.pk %}">{{post.title}}</a></h2>{{post.publish}}<br>
+                    {#display the post with its title and date it was published with a link to the posts page#}
+                      {% if post.image %}
+                      {#if the post has an image#}
+                      <img src="{{post.image.url}}" width="240"/>
+                      {#display the posts image#}
+                      {%endif%}
+                    </td>
+                  </tr>
+                </table>
+              {% endfor %}
+          {%else%}
+            <h1>There are no posts with those keywords</h1>
+            {#if there are no results display this error message#}
+          {%endif%}
+          <a class="button" href = "{% url 'Posts' %}"><h2>Go Back</h2></a>
+        </td>
+      </tbody>
+  </table>
+{%endblock%}

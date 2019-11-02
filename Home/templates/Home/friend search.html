@@ -1,0 +1,25 @@
+{% extends 'Home/Friends.html'%}
+{#extends the Friends.html page. This shows the relationship with the parent page Friends.html and this child page#}
+{%block content%}
+      <tbody>
+        <td>
+          {%if results%}
+          {#if there are results to show#}
+              {% for user in results %}
+                <a href="{% url 'ViewOtherProfile' pk=user.pk%}"><h3>{{user}}</h3></a>
+                {#display each username and a link to their profile#}
+                {% if not user in friends %}
+                {#if the users arent friends#}
+                  <a href="{%url 'ChangeFriendStatus' operation='add' pk=user.pk%}"><button type="button">Add</button></a><br>
+                  {#display an add friend button#}
+                {%endif%}
+              {% endfor %}
+          {%else%}
+            <h1>There are no users with that username, firstname or lastname</h1>
+            {#else display this error message#}
+          {%endif%}
+          <a class="Button" href = "{% url 'Friends' %}"><h2>Go Back</h2></a>
+          {#link to go back to view the users friends list#}
+        </td>
+      </tbody>
+{%endblock%}

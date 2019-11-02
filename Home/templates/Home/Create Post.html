@@ -1,0 +1,30 @@
+{%extends 'Home/Posts.html'%}
+{#extends the Posts.html page. This shows the relationship with the parent page Posts.html and this child page#}
+{%block content%}
+<form method="POST" enctype='multipart/form-data'>
+  {#this is a form used to recieve files#}
+    {% csrf_token %}
+    {#this is a csrf_token which securely collects the information submitted in the form#}
+    <table bgcolor = white>
+      {#in a table with a white backgorund#}
+        <tbody>
+        <tr>
+            <td><p>
+                {% for field in form %}
+                    {{field.label_tag}}<br>
+                    {{field}}<br>
+                {% endfor %}
+                </p>
+                {%for field in form%}
+                    {{field.errors}}
+                {% endfor %}
+                {{ form.non_field_errors }}
+                {#display form and field errors#}
+                <button type="submit" class="Button4">Create Post</button>
+                {#submit button to submit post#}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+{%endblock%}

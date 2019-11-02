@@ -1,0 +1,126 @@
+{% extends 'Home/base2.html'%}
+{#extends the base.html page. This shows the relationship with the parent page base2.html and this child page#}
+{% load static %}
+{#django funciton to load css styles for page#}
+{% block title %}Posts{% endblock %}
+{#title tag to store title of page#}
+{% block css %}<link rel="stylesheet" type="text/css" href="{% static 'css/Posts.css' %}">{% endblock %}
+{#link to the css file to load the style for this page#}
+{% block body %}
+{#blocks for body to link to body elements in parent page.#}
+{% if user.is_authenticated %}
+{#if the user is authenticated#}
+<div class="container">
+	<table>
+		<tbody>
+			<tr>
+				<td>
+			<table bgcolor = lightblue>
+				{#table with a light blue background is displayed#}
+				<tbody>
+				<tr>
+					<td>
+						<p align = "center"> Welcome {{user.username}} </p>
+						{#display welcome with username of user#}
+						<a href="{% url 'Profile' %}" class="Button1">Profile</button>
+							{#display button that links to profile page#}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="{% url 'Friends' %}" class="Button2">Friends</button>
+						{#display button that links to friends page#}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="{% url 'Logout' %}" class="Button3">Logout</button>
+							{#displays button that links to logout page#}
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			</td>
+				<td>
+			</td>
+				<td>
+			{%block content%}
+			<table bgcolor = white>
+				{#in a table with a white backgorund#}
+				<tbody>
+				<tr>
+					<td>
+					 <a href="{% url 'CreatePost' %}" class="Button4">Create Post</button>
+						 {#display an create post button linking to create a post#}
+					</td>
+				</tr>
+				<h2>Search posts</h2>
+				{#search posts in heading tags#}
+				<tr>
+					<form method="GET" action="{% url 'Search' %}">
+						<input name="query" value="{{request.GET.query}}" placeholder="Search">
+						<button type="submit">Search</button>
+					</form>
+					{#form used to search posts which links to search#}
+					{%if post%}
+					{#if you have made any posts will display content below#}
+					<td>
+						<h1>Your Posts</h1>
+						{#Your posts in heading tags#}
+						{% for post in post %}
+						{#for every post you have posted#}
+							<table border = 1>
+								<tr>
+									<td>
+									<h2><a href="{% url 'PostDetail' pk=post.pk %}">{{post.title}}</a></h2>{{post.publish}}<br>
+									{#display the post with a link to view the post on a seperate page#}
+									{#displays posts title and date and time post was published#}
+										{% if post.image %}
+										{#if the post has an image associated to it#}
+										<img src="{{post.image.url}}" width="240"/>
+										{#will display the posts image with a url to the image#}
+										{%endif%}
+									</td>
+								</tr>
+							</table>
+						{% endfor %}
+					</td>
+					{%endif%}
+					{%if others%}
+					{#if other users have made a post#}
+					<td>
+						<h1>Other Posts</h1>
+						{#Other posts in heading tags#}
+						{% for post in others%}
+						{#for every post another user has made#}
+							<table border = 1>
+								<tr>
+									<td>
+									<h2><a href="{% url 'PostDetail' pk=post.pk %}">{{post.title}}</a></h2>{{post.publish}}<br>
+									{#post is displayed with title and date and time it was published#}
+									{#can view post on a seperate page#}
+										{% if post.image %}
+										{#if the post has an image associated to it#}
+										<img src="{{post.image.url}}" width="240"/>
+										{#displays posts image with a url to the image#}
+										{%endif%}
+									</td>
+								</tr>
+							</table>
+						{% endfor %}
+					</td>
+					{%endif%}
+				</tr>
+				</tbody>
+			</table>
+			{%endblock%}
+			</td>
+			</tr>
+		</tbody>
+	</table>
+	{% else %}
+	<p>You can't access this page as you aren't logged in</p>
+	{#display this error message is the user viewing the page is not logged in#}
+	{% endif %}
+</div>
+{% endblock %}

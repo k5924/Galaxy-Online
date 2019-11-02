@@ -1,0 +1,88 @@
+{% extends 'Home/base2.html'%}
+{#extends the base2.html page. This shows the relationship with the parent page base2.html and this child page#}
+{% load static %}
+{#django funciton to load css styles for page#}
+{% block title %}Profile{% endblock %}
+{#title tag to store title of page#}
+{% block css %}<link rel="stylesheet" type="text/css" href="{% static 'css/Profile.css' %}">{% endblock %}
+{#link to the css file to load the style for this page#}
+{% block body %}
+{#blocks for body to link to body elements in parent page.#}
+{% if user.is_authenticated %}
+{#if the user is authenticated#}
+<div class="container">
+	<table>
+		<tbody>
+			<tr>
+				<td>
+			<table bgcolor = lightblue>
+				{#table with a light blue background is displayed#}
+				<tbody>
+				<tr>
+					<td>
+						<p align = "center"> Welcome {{request.user.username}} </p>
+						{#display welcome with username of user#}
+						<a href="{% url 'Friends' %}" class="Button1">Friends</button>
+							{#display button that links to friends page#}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="{% url 'Posts' %}" class="Button2">Posts</button>
+						{#displays button that links to posts page#}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="{% url 'Logout' %}" class="Button3">Logout</button>
+							{#displays button that links to logout page#}
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			</td>
+				<td>
+			</td>
+				<td>
+			<table bgcolor = white>
+				{#in a table with a white backgorund#}
+				<tbody>
+				<tr>
+					<td>
+					{%block content%}
+					<fieldset>
+					<legend><h1>User information</h1></legend>
+					{#display the user information of the user#}
+						<p>
+						Firstname: {{user.first_name}}<br>
+						Lastname: {{user.last_name}}<br>
+						Year: {{user.userinformation.year}}<br>
+						Interest: {{user.userinformation.interest}}<br>
+						Postcode: {{user.userinformation.postcode}}<br>
+						Town: {{user.userinformation.town}}
+						{#get users firstname, lastname, year, interest, postcode and town#}
+						</p>
+						{%if request.user.pk == user.pk%}
+						{#if the user viewing the profile is the owner of the profile#}
+							<a href="{% url 'EditProfile' %}" class="Button4">Complete Personal Information</button>
+								{#display an edit profile button linking to edit the users profile#}
+						{%else%}
+							<a href="{% url 'AddFriend' %}" class="Button4">Go Back</button>
+								{#return to the AddFriend page as you can only view other profile pages from AddFriend#}
+						{%endif%}
+					</fieldset>
+					{%endblock%}
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			</td>
+			</tr>
+		</tbody>
+	</table>
+	{% else %}
+	<p>You can't access this page as you aren't logged in</p>
+	{#display this error message is the user viewing the page is not logged in#}
+	{% endif %}
+</div>
+{% endblock %}

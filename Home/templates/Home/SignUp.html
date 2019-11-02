@@ -1,0 +1,50 @@
+{% extends "Home/base.html" %}
+{#extends the base.html page. This shows the relationship with the parent page base.html and this child page#}
+{% load static %}
+{#load css file to use for styling#}
+{% block css %}<link rel="stylesheet" type="text/css" href="{% static 'css/SignUp.css' %}">{% endblock %}
+{#load css file as a link that can be read as a text or css file with reference to file location#}
+{#block css used to link to block element in parent page to this page#}
+{% block body %}
+{#start of body elements#}
+    <div class="Container">
+        {# create div class called container #}
+        <h1 align = "center">{% block title %}Signup{% endblock %}</h1>
+        {#open tag for heading to be aligned in center of page. opening block title used to show that#}
+        {#variable between block and endblock is used for title in parent page. endblock shows there is no more#}
+        {#content for the given variable. End tag for heading to show end of heading#}
+        <div class="Content" align= "center">
+            {# create div with id of content and align the div to center of page #}
+            <form method = "post">
+                {#opening form tag to get post from page#}
+                {% csrf_token %}
+                {#this is a csrf_token which securely collects the information submitted in the form#}
+                <table border="0">
+                  {#start of table with invisible border#}
+                    <tr><p>
+                        {% for field in form%}
+                            <br>{{field.label_tag}}
+                            <br>{{ field }}
+                        {% endfor %}
+                        </p>
+                        {%for field in form%}
+                            {{field.errors}}
+                        {% endfor %}
+                        {{ form.non_field_errors }}
+                        {#this displays all of the errors that will display in the form#}
+                        <td>
+                          {#start of column#}
+                        <button type="submit" class=SignUpButton>Sign Up</button>
+                        {#this is the signupbutton#}</td>
+                    </tr>
+                    {#end of row#}
+                </table>
+                {#end of table#}
+            </form>
+            {#end of form#}
+        </div>
+        {#end of div#}
+    </div>
+    {#end of div#}
+{% endblock %}
+{#end of body block#}

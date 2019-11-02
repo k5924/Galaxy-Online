@@ -1,0 +1,62 @@
+{% extends "Home/base.html" %}
+{#extends the base.html page. This shows the relationship with the parent page base.html and this child page#}
+{% load static %}
+{#load css file to use for styling#}
+{% block css %}<link rel="stylesheet" type="text/css" href="{% static 'css/Student.css' %}">{% endblock %}
+{#load css file as a link that can be read as a text or css file with reference to file location#}
+{#block css used to link to block element in parent page to this page#}
+{% block body %}
+{#start of body elements#}
+    <div class="Container">
+        {# create div class called container #}
+        <h1 align="center">{% block title %}Student Sign In{% endblock %}</h1>
+        {#open tag for heading to be aligned in center of page. opening block title used to show that#}
+        {#variable between block and endblock is used for title in parent page. endblock shows there is no more#}
+        {#content for the given variable. End tag for heading to show end of heading#}
+        <div class="LoginButtons" align="center">
+            {#create div class called loginbuttons that is aligned to the center of the page#}
+            <form method = 'post'>
+                {#start of form#}
+                {% csrf_token %}
+                {#this is a csrf_token which securely collects the information submitted in the form#}
+                <table border="0">
+                    {#start of table with invisible border#}
+                    <tr>
+                        <p>
+                        {% for field in form%}
+                            <br>{{field.label_tag}}
+                            <br>{{ field }}
+                        {% endfor %}
+                        </p>
+                        {% for error in form.non_field_errors %}
+                            <ul>{{error}}</ul>
+                        {% endfor %}
+                        {#this displays all of the errors that will display in the form#}
+                        <td>
+                            {#column tag#}
+                        <button type="submit" class="LoginButton">Login</button>
+                        {#create login button#}
+                        </td>
+                        {#end of column#}
+                    </tr>
+                    {#end of row#}
+                    <tr>
+                        {#start of new row#}
+                        <td>
+                            {#new column#}
+                        <a href="{% url 'SignUp' %}" class="SignUpButton">Sign Up</button>
+                            {#linked button to url SignUp in view which displays SignUp.html#}
+                        </td>
+                        {#end of column#}
+                    </tr>
+                    {#end of row#}
+                </table>
+                {#end of table#}
+            </form>
+            {#end of form#}
+        </div>
+        {#end of div#}
+    </div>
+    {#end of div#}
+{% endblock %}
+{#end of body block#}

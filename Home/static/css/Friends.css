@@ -1,0 +1,31 @@
+.Button4{
+    display:inline-block;
+    /*allow height and width values to be made for button*/
+    width: 100%;
+    font-size:3.5vw;
+    /*make font size of button 5% of viewport width*/
+    cursor:pointer;
+    /*have cursor change to pointer on button hover*/
+    text-align: center;
+    /*align button text to center of button*/
+    outline:black;
+    /*set outline of text to black*/
+    color: white;
+    /*have text color set to white*/
+    background-color: red;
+    /*have background of button set to red*/
+    border:black;
+    /*have corder of button set to black*/
+    border-radius: 3px;
+    /*have border of buton set to 3 pixels and rounded*/
+}
+.Button4:hover{
+    background-color: rgb(220,20, 60)
+    /*have button set to lightred when hovering over button*/
+}
+.Button4:active{
+    background-color: rgb(220,20, 60);
+    /*when button clicked changed color to lightred*/
+    transform:translateY(2px)
+    /*move button down 2 pixels*/
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{#defines that this is a html document#}
+{% load static %}
+{#django funciton to load css styles for page#}
+<html lang="en">
+{#defines that the html document is in english#}
+<head>
+    {#head tag for html document#}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {#above meta tags auto generated for html document#}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    {#link to the css file to load the style for this page#}
+    {% block css%}{% endblock %}
+    {#link to css block from child pages#}
+    <title>{% block title %}{% endblock %}</title>
+    {#title tag to store title of page. block title used to link to title on child pages#}
+    {#end tag for title block and title ends the space for the given variable on child page#}
+</head>
+{#end tag for head element#}
+<body>
+    {#starting body tage#}
+    {% block body %}{% endblock %}
+    {#blocks for body to link to body elements in child page. End block to show end of body block on child page#}
+</body>
+{#end of body tag to show end of body element on page#}
+</html>
+{#end of html tag to show end of html document#}

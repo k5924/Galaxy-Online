@@ -1,0 +1,64 @@
+.Container {
+    border: 1px solid black;
+    /* this makes the container have a border of 1 pixel that is black */
+    background-color: darkblue;
+    /* this makes the container have a background colour of darkblue */
+    margin: auto;
+    /* this makes the margin of the container automatically adjust */
+    margin-top: 120px;
+    /* this makes the containers top margin from the page persistantly 120 pixels */
+    width: 640px
+    /* this makes the width of the container 640px */
+}
+h1{
+    font-size:6vw;
+    /* this makes the heading have a font size that is 6% of the viewport width */
+    color: darkturquoise
+    /* this makes the heading have a darkturquoise color */
+}
+.button{
+    display:inline-block;
+    /* this lets us set a width and height to the button */
+    padding:auto;
+    /* this makes the padding around the button automatic */
+    font-size:3.5vw;
+    /* this makes the font size in the button 3.5% of the viewport width*/
+    cursor:pointer;
+    /* this changes the cursor to a pointer when hovering over button*/
+    text-align: center;
+    /* this has the text in the button align in the center of the button*/
+    outline:black;
+    /* this makes the outline of the text black*/
+    color: black;
+    /* this makes the text color black*/
+    background-color: grey;
+    /* this makes the background of the button grey */
+    border:black;
+    /*this makes the border of the button black*/
+    border-radius: 3px;
+    /*this gives a rounded effect to the button of 3 pixels*/
+}
+.button:hover{
+    background-color: lightgrey
+    /*this makes the background colour of the button lightgrey when the cursor hovers over the button*/
+}
+.button:active{
+    background-color:lightgrey;
+    /* this maes the background color lightgrey when the button is clicked*/
+    transform:translateY(2px)
+    /*this moves the button down by 2 pixels when clicked*/
+}
+@media screen and (max-width: 640px) {
+    /*when the page screen has a width less than or equal to 640 pixels*/
+    .Container{
+        width: 100%;
+        /*make the width of the container the size of the page*/
+    }
+}
+@media screen and (max-height: 480px) {
+    /*when the page screen has a height less than or equal to 480 pixels*/
+    .Container{
+        margin: auto;
+        /*make the margin of the container automatically adjust*/
+    }
+}

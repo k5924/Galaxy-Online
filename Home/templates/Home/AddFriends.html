@@ -1,0 +1,81 @@
+{% extends 'Home/Friends.html'%}
+{#extends the Friends.html page. This shows the relationship with the parent page Friends.html and this child page#}
+{%block content%}
+<h2>Search for friends</h2>
+{#search for friends in heading tags#}
+<td>
+  <a class="Button" href = "{% url 'Friends' %}"><h2>Go Back</h2></a>
+  {#button to go back to their friends list page#}
+</td>
+<td>
+<h2>Recommended by</h2>
+{#recommended by in heading tags#}
+</td>
+<tr>
+  <form method="GET" action="{% url 'SearchFriends' %}">
+    <input name="query" value="{{request.GET.query}}" placeholder="Search">
+    <button type="submit">Search</button>
+    <br><br>
+    {#search form to search friends#}
+  {%if yearlist%}
+  {#if users in same year#}
+    <td>
+    <h2>YearGroup</h2>
+    {%for user in yearlist%}
+      <a href="{% url 'ViewOtherProfile' pk=user.pk%}"><h3>{{user}}</h3></a>
+      {#display users with link to their profile page#}
+      {% if not user in friends %}
+      {#if the users arent friends#}
+        <a href="{%url 'ChangeFriendStatus' operation='add' pk=user.pk%}"><button type="button">Add</button></a><br>
+        {#display button to add friend#}
+      {%endif%}
+    {%endfor%}
+    </td>
+  {%endif%}
+  {%if interestlist%}
+  {#if users have same interest#}
+    <td>
+    <h2>Interests</h2>
+    {% for user in interestlist %}
+      <a href="{% url 'ViewOtherProfile' pk=user.pk%}"><h3>{{user}}</h3></a>
+      {#display users with link to their profile page#}
+      {% if not user in friends %}
+      {#if the users arent friends#}
+        <a href="{%url 'ChangeFriendStatus' operation='add' pk=user.pk%}"><button type="button">Add</button></a><br>
+        {#display button to add friend#}
+      {%endif%}
+    {% endfor %}
+    </td>
+  {%endif%}
+  {%if postcodelist%}
+  {#if users have same postcode#}
+    <td>
+    <h2>Postcode</h2>
+    {% for user in postcodelist %}
+      <a href="{% url 'ViewOtherProfile' pk=user.pk%}"><h3>{{user}}</h3></a>
+      {#display users with link to their profile page#}
+      {% if not user in friends %}
+      {#if the users arent friends#}
+        <a href="{%url 'ChangeFriendStatus' operation='add' pk=user.pk%}"><button type="button">Add</button></a><br>
+        {#display button to add friend#}
+      {%endif%}
+    {% endfor %}
+    </td>
+  {%endif%}
+  {%if townlist%}
+  {#if users in same town#}
+    <td>
+    <h2>Town</h2>
+    {% for user in townlist %}
+      <a href="{% url 'ViewOtherProfile' pk=user.pk%}"><h3>{{user}}</h3></a>
+      {#display users with link to their profile page#}
+      {% if not user in friends %}
+      {#if the users arent friends#}
+        <a href="{%url 'ChangeFriendStatus' operation='add' pk=user.pk%}"><button type="button">Add</button></a><br>
+        {#display button to add friend#}
+      {%endif%}
+    {% endfor %}
+    </td>
+  {%endif%}
+</tr>
+{%endblock%}

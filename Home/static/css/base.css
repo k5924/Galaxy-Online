@@ -1,0 +1,15 @@
+body{
+    background-color: midnightblue;
+    /* this makes the background of the body element midnightblue */
+}
+ul{
+    list-style-type: none;
+    color: red;
+    /*this makes the form errors on the page have no bullet points but appear red*/
+}
+p{
+    color: white;
+    /*this makes the paragraph have white colored text*/
+    font-size: 12px
+    /*this makes the paragraph have a font size of 12 pixels*/
+}

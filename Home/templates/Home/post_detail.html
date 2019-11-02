@@ -1,0 +1,82 @@
+{%extends 'Home/Posts.html'%}
+{#extends the Posts.html page. This shows the relationship with the parent page Posts.html and this child page#}
+{%block content%}
+<table bgcolor = white border=1>
+  {#in a table with a white backgorund#}
+        <tbody>
+        <tr>
+            <td>
+            <h2>{{post.title}}</h2>
+            {#display the posts title#}
+            {{post.content}}<br>
+            {#display the content in the post#}
+            {% if post.image %}
+                <img src="{{post.image.url}}" width="360"/><br>
+            {%endif%}
+            {#display the posts image if the post has an image#}
+            {%if request.user != post.user%}
+              <br>Made by {{post.user}}
+            {%endif%}
+            {#if the current user didnt create the post show who the post was made by#}
+            <h4>{{post.publish}}</h4>
+            {#display the time the post was published#}
+            {{total_likes}} Like{{total_likes|pluralize}}
+            {#display the number of likes on the post#}
+            <form action="{% url 'LikePost'%}" method="POST">
+              {#link to like post#}
+                {% csrf_token %}
+                {#this is a csrf_token which securely collects the information submitted in the form#}
+                {%if is_liked%}
+                    <button type="submit" name="post_id" value="{{post.id}}" class="Button4">Dislike</button>
+                    {#if the user liked the post display a dislike button#}
+                {%else%}
+                    <button type="submit" name="post_id" value="{{post.id}}" class="Button5">Like</button>
+                    {#if the user hasnt liked the post display a like button#}
+                {%endif%}
+            </form>
+            {%if request.user == post.user%}
+            {#if the current user made by post#}
+                <form action="{% url 'DeletePost'%}" method="POST">
+                  {#link to delete post#}
+                    {% csrf_token %}
+                    {#this is a csrf_token which securely collects the information submitted in the form#}
+                    <br>
+                        <button type="submit" name="post_id" value="{{post.id}}" class="Button4">Delete</button>
+                        {#button to delete post#}
+                </form>
+            {%endif%}
+            <br>
+            <a class="button" href = "{% url 'Posts' %}"><h1>Go Back</h1></a>
+            {#button to return to posts page#}
+            </td>
+            <td>
+                <form method="POST">
+                    {% csrf_token %}
+                    {#this is a csrf_token which securely collects the information submitted in the form#}
+                    <p>
+                    {% for field in form %}
+                        Comment:<br>
+                        {{field}}<br>
+                    {% endfor %}
+                    </p>
+                    {%for field in form%}
+                        {{field.errors}}
+                    {% endfor %}
+                    {{ form.non_field_errors }}
+                    {#displays comment form#}
+                    <button type="submit" class="Button4">submit</button>
+                    {#button to submit comment#}
+                </form>
+                {{comments.count}} Comment{{comments|pluralize}}
+                {#count number of comments for the post#}
+                {% for comment in comments%}
+                {#for each comment#}
+                    <p class="mb-0">{{comment.content}}</p> {#display the comment#}
+                    <footer class="blockquote-footer">by <cite title="Source Title">{{comment.user|capfirst}}</cite></footer>
+                    {#display author of comment#}
+                {%endfor%}
+            </td>
+        </tr>
+        </tbody>
+</table>
+{%endblock%}

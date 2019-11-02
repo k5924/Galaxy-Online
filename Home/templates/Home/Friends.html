@@ -1,0 +1,84 @@
+{% extends 'Home/base2.html'%}
+{#extends the base2.html page. This shows the relationship with the parent page base2.html and this child page#}
+{% load static %}
+{#django funciton to load css styles for page#}
+{% block title %}Friends{% endblock %}
+{#title tag to store title of page#}
+{% block css %}<link rel="stylesheet" type="text/css" href="{% static 'css/Friends.css' %}">{% endblock %}
+{#link to the css file to load the style for this page#}
+{% block body %}
+{#blocks for body to link to body elements in parent page.#}
+{% if user.is_authenticated %}
+{#if user is authenticated#}
+<div class="container">
+	<table>
+		<tbody>
+			<tr>
+				<td>
+			<table bgcolor = lightblue>
+				<tbody>
+				<tr>
+					<td>
+						<p align = "center"> Welcome {{user.username}} </p>
+						{#display welcome next to users username#}
+						<a href="{% url 'Profile' %}" class="Button1">Profile</button>
+							{#button linking to profile page#}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="{% url 'Posts' %}" class="Button2">Posts</button>
+						{#button linking to Posts page#}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="{% url 'Logout' %}" class="Button3">Logout</button>
+							{#button to log out user#}
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			</td>
+				<td>
+			</td>
+				<td>
+			<table bgcolor = white border=black>
+				{#in a table with a white backgorund#}
+				<tbody>
+					{%block content%}
+						<tr>
+							<td>
+							<a href="{% url 'AddFriend' %}" class="Button4">Add Friends</button>
+								{#button to add friends with link to AddFriend function#}
+							</td>
+						</tr>
+						<tr>
+							{%if friends%}
+							{#if the user has friends#}
+						    <td>
+						    <h2>Friends</h2>
+								{#friends in heading tags#}
+						    {%for user in friends%}
+								{#for each user in the friends list#}
+						      <a href="{% url 'ViewOtherProfile' pk=user.pk%}"><h3>{{user}}</h3></a>
+									{#display username and link to profile of user#}
+									<a href="{% url 'ChangeFriendStatus' operation='remove' pk=user.pk%}"><button type="button">Remove</button></a>
+									{#display button to remove user from friedns list linking to ChangeFriendStatus funciton#}
+						    {%endfor%}
+						    </td>
+						  {%endif%}
+						</tr>
+					{%endblock%}
+				</tbody>
+			</table>
+			</td>
+			</tr>
+		</tbody>
+	</table>
+	{% else %}
+	<p>You can't access this page as you aren't logged in</p>
+	{#display message if user is not logged in#}
+	{% endif %}
+</div>
+{% endblock %}

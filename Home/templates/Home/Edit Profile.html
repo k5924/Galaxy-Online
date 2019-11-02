@@ -1,0 +1,18 @@
+{%extends 'Home/Profile.html'%}
+{#extends the Profile.html page. This shows the relationship with the parent page Profile.html and this child page#}
+{%block content%}
+<form method="POST">
+    {% csrf_token %}
+    {#this is a csrf_token which securely collects the information submitted in the form#}
+    <fieldset>
+    <legend><h1>User information</h1></legend>
+        {{form1.as_p}}
+        {{form2.as_p}}
+        {{form3.as_p}}
+        {{form4.as_p}}
+        {#displays forms in paragraph format#}
+        <button type="submit" class="Button4">Complete</button>
+        {#complete button to submit form#}
+    </fieldset>
+</form>
+{%endblock%}
