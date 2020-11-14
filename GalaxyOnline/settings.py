@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_cleanup',
     'Home',
 ]
 # this shows the installed apps that the project uses. All fields in list are automatically generated

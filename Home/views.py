@@ -295,7 +295,7 @@ def DeletePost(request):
     # create function DeletePost with parameter request
     post = get_object_or_404(Post_model, id=request.POST.get('post_id'))
     # get post to delete
-    post.delete()
+    post.delete(False)
     # delete post from posts table
     return HttpResponseRedirect('../Posts')
     # redirect the user to the Posts view
