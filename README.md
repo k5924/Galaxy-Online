@@ -7,9 +7,9 @@
 ## Installation
 
 > Ensure that python is installed on the system with pip added to path in environment variables on windows (if you run the python installer, there is an option which does this for you) <br>
-To install the Django Web Framework run
-R<pre><code>pip install django</code></pre>
-To run the website use
+>To install the Django Web Framework run
+<pre><code>pip install django</code></pre>
+>To run the website use
 <pre><code>python manage.py runserver</pre></code>
 <h3 align="left">Languages and Tools:</h3>
 <p align="left"><a href="https://www.w3schools.com/css/" target="_blank"><img 
