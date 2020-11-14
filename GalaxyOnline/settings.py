@@ -86,9 +86,12 @@ WSGI_APPLICATION = 'GalaxyOnline.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+   'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'k5924$default',
+        'USER': 'k5924',
+        'PASSWORD': 'X4p#@TSJY#LveG',
+        'HOST': 'k5924.mysql.pythonanywhere-services.com',
     }
 }
 
