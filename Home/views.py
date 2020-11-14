@@ -155,7 +155,7 @@ def AddFriend(request):
     except Friend.DoesNotExist:
         friends = None
         # unless the current user has no friends
-    superuser = User.objects.get(username="Kamran")  # store superuser as admin
+    superuser = User.objects.get(username="admin")  # store superuser as admin
     yearlist = UserInformation.objects.filter(year=user.userinformation.year).exclude(user=user)
     yearlist = yearlist.exclude(user=superuser)
     interestlist = UserInformation.objects.filter(interest=user.userinformation.interest).exclude(user=user)
@@ -326,7 +326,7 @@ def SearchFriends(request):
     # store search parameters as a query
     if query:
         # if a query has been made when searching
-        superuser = User.objects.get(username="Kamran")
+        superuser = User.objects.get(username="admin")
         # define super user as the admin
         results = User.objects.filter(Q(username__icontains=query) | Q(first_name__icontains=query) | Q(last_name__icontains=query))
         # search for users with the query in the username, firstname, lastname
