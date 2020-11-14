@@ -22,7 +22,8 @@ urlpatterns = [
     path('Friends', views.Friends, name='Friends'),
     path('AddFriends', views.AddFriend, name='AddFriend'),
     path('connect/<operation>/<int:pk>', views.ChangeFriendStatus, name='ChangeFriendStatus'),
-    path('AddFriends/results/', views.SearchFriends, name='SearchFriends')
+    path('AddFriends/results/', views.SearchFriends, name='SearchFriends'),
+    path('update_server/', views.update, name='update')
 ]
 # this links each of the views in the views.py file to a url
 # to be accessed when needed
