@@ -22,14 +22,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ''
+SECRET_KEY='qmmmk$1s1*^$iz@p-p9y+t6h&@gwvqvbs)!@gt&eu$^w+za768'
 # security key for project. automatically generated
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 # sets debug value. automaticaly generated
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['k5924.pythonanywhere.com']
 # shows allowed hosts for project. Automatically generated
 
 
@@ -141,10 +141,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'Home/media')
 # this stores the media files in a media directory
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
-# i added this to the file as to allow the project to locate my static folder
 
 LOGIN_REDIRECT_URL = 'Profile'
 # this redirects the user to the profile page after loggin into the system
