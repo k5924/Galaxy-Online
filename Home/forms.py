@@ -24,7 +24,7 @@ class RegisterForm(UserCreationForm):
         # connects to User table in database
         fields = ['email', 'username', 'password1', 'password2', 'first_name', 'last_name']
         # calls these fields to use in forms. Im not customising the password inputs so calling the fields is sufficient
-    
+
     def clean(self):
         # creates method to clean data
         cleaned_data = super().clean()
@@ -34,7 +34,7 @@ class RegisterForm(UserCreationForm):
         last_name = cleaned_data.get("last_name")
         username = cleaned_data.get("username")
         # gets cleaned data in form to use for validation
-        with open("Home/banned words.txt") as file:
+        with open("Galaxy-Online/Home/banned words.txt") as file:
             # opens banned words text file as file
             lines = [line.strip() for line in file]
             # appends banned words to a list
@@ -127,20 +127,20 @@ class PostCodeForm(forms.ModelForm):
     # creates postcode form
     postcode = forms.CharField(max_length=7, min_length=6, label="Postcode")
     # postcode is a character field with length between 6 and 7 characters and has the label postcode
-    
+
     class Meta():
         model = PostCode
         # connects to the PostCode table in the database
         fields = ('postcode',)
         # accessed field is postcode
-    
+
     def clean(self):
         # creates clean method to clean data
         cleaned_data = super().clean()
         # store cleaned data as variable
         postcode = cleaned_data.get("postcode")
         # get cleaned data from form
-        with open("Home/banned words.txt") as file:
+        with open("Galaxy-Online/Home/banned words.txt") as file:
             # open banned words as a text file
             lines = [line.strip() for line in file]
             # store words in text file as a list
@@ -173,7 +173,7 @@ class TownForm(forms.ModelForm):
         # stores cleaned data in a variable
         town = cleaned_data.get("town")
         # get cleaned data from form
-        with open("Home/banned words.txt") as file:
+        with open("Galaxy-Online/Home/banned words.txt") as file:
             # open banned words as a text file
             lines = [line.strip() for line in file]
             # store banned words in a list
@@ -206,7 +206,7 @@ class PostsForm(forms.ModelForm):
         title = cleaned_data.get("title")
         content = cleaned_data.get("content")
         # gets cleaned data from form
-        with open("Home/banned words.txt") as file:
+        with open("Galaxy-Online/Home/banned words.txt") as file:
             # open banned words are a text file
             lines = [line.strip() for line in file]
             # store each word in list
@@ -238,7 +238,7 @@ class CommentForm(forms.ModelForm):
         # store cleaned data in a variable
         content = cleaned_data.get("content")
         # get cleaned data from form
-        with open("Home/banned words.txt") as file:
+        with open("Galaxy-Online/Home/banned words.txt") as file:
             # opens banned words as a text file
             lines = [line.strip() for line in file]
             # appends words to text list
