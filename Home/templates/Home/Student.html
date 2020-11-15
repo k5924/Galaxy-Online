@@ -6,6 +6,7 @@
 {#load css file as a link that can be read as a text or css file with reference to file location#}
 {#block css used to link to block element in parent page to this page#}
 {% block body %}
+{% load crispy_forms_tags %}
 {#start of body elements#}
     <div class="Container">
         {# create div class called container #}
@@ -22,33 +23,17 @@
                 <table border="0">
                     {#start of table with invisible border#}
                     <tr>
-                        <p>
-                        {% for field in form%}
-                            <br>{{field.label_tag}}
-                            <br>{{ field }}
-                        {% endfor %}
-                        </p>
-                        {% for error in form.non_field_errors %}
-                            <ul>{{error}}</ul>
-                        {% endfor %}
-                        {#this displays all of the errors that will display in the form#}
+                        {{ form | crispy}}
                         <td>
                             {#column tag#}
-                        <button type="submit" class="LoginButton">Login</button>
+                        <button type="submit" class="btn btn-success btn-lg">Login</button>
                         {#create login button#}
+                        <a href="{% url 'SignUp' %}" class="btn btn-info btn-lg">Sign Up</a>
+                        {#linked button to url SignUp in view which displays SignUp.html#}
                         </td>
                         {#end of column#}
                     </tr>
                     {#end of row#}
-                    <tr>
-                        {#start of new row#}
-                        <td>
-                            {#new column#}
-                        <a href="{% url 'SignUp' %}" class="SignUpButton">Sign Up</button>
-                            {#linked button to url SignUp in view which displays SignUp.html#}
-                        </td>
-                        {#end of column#}
-                    </tr>
                     {#end of row#}
                 </table>
                 {#end of table#}

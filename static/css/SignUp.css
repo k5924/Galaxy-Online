@@ -1,46 +1,19 @@
-h1{
-    color:white;
-    /*this makes the heading white*/
-    font-size:3.25vw
-    /*this makes the heading 3.25% of the size of the viewport width*/
-}
 .Container{
-    border: 1px solid black;
-    /*this makes the Containers border 1 pixel and black*/
-    background-color: darkblue; 
-    /*this makes the Container have a darkblue background*/
     margin: auto;
     /*this makes the margin of the container automatic*/
+    margin-top: 120px;
     width: 640px
     /*this makes the width of the container 640px*/
 }
-.SignUpButton{
+.btn{
     display:inline-block;
     /*this makes the signup button able to have height and width values*/
     padding:auto;
     /*this makes the padding around the button automatically adjust*/
-    font-size:3.5vw;
+    font-size:3.5vh;
     /*this makes the font size of the button 3.5% of the viewport width*/
-    cursor:pointer;
-    /*this changes the cursor to a pointer when you hover over the button*/
-    text-align: center;
-    /*this makes the text in the button align to the center*/
-    outline:black;
-    /*this gives the text a black border*/
-    color: white;
-    /*this makes the text white*/
-    background-color: red;
-    /*this makes the button background red*/
-    border:black;
-    /*this makes the button have a black border*/
-    border-radius: 3px;
-    /*this gives the button a rounded effect of 3 pixels*/
 }
-.SignUpButton:hover{
-    background-color: rgb(220,20, 60)
-    /*when hovering over button gives the button this color*/
-}
-.SignUpButton:active{
+.btn:active{
     background-color: rgb(220,20, 60);
     /*when clicking button gives button this colour*/
     transform:translateY(2px)

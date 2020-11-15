@@ -1,18 +1,4 @@
-h1{
-    color:white;
-    /*make heading color white*/
-    font-size:5vw
-    /*make font size of heading 5% of the viewport width*/
-}
-ul{
-    color: red;
-    /*this makes the form ValidationError appear red*/
-}
 .Container{
-    border: 1px solid black;
-    /*give container a black border that is 1 pixel thick*/
-    background-color: darkblue; 
-    /*make background of container darkblue*/
     margin: auto;
     /*make margin of container automatically adjustable*/
     margin-top: 120px;
@@ -20,66 +6,15 @@ ul{
     width: 640px
     /*make width of container 640 pixels*/
 }
-.LoginButton{
+.btn{
     display:inline-block;
     /*allow height and width values to be made for button*/
-    width: 100%;
-    font-size:3.5vw;
+    font-size:3.5vh;
     /*make font size of button 3.5% of viewport width*/
-    cursor:pointer;
-    /*have cursor change to pointer on button hover*/
-    text-align: center;
-    /*align button text to center of button*/
-    outline:black;
-    /*set outline of text to black*/
-    color: white;
-    /*have text color set to white*/
-    background-color: green;
-    /*have background of button set to green*/
-    border:black;
-    /*have corder of button set to black*/
-    border-radius: 3px;
-    /*have border of buton set to 3 pixels and rounded*/
 }
-.LoginButton:hover{
-    background-color: lightgreen
-    /*have button set to lightgreen when hovering over button*/
-}
-.LoginButton:active{
-    background-color:lightgreen;
-    /*when button clicked changed color to lightgreen*/
+.btn:active{
     transform:translateY(2px)
     /*move button down 2 pixels*/
-}
-.SignUpButton{
-    display:inline-block;
-    /*allow for adjusting height and width values*/
-    font-size:3.5vw;
-    /*set font size of button to 3.5% of viewport width*/
-    cursor:pointer;
-    /*have cursor change to pointer on hover*/
-    text-align: center;
-    /*align button text to center of button*/
-    outline:black;
-    /*have outline of text as black*/
-    color: white;
-    /*have color of text as white*/
-    background-color: red;
-    /*have background of button as red*/
-    border:black;
-    /*have border of button set to black*/
-    border-radius: 3px;
-    /*have border of button be 3 pixels and rounded*/
-}
-.SignUpButton:hover{
-    background-color: rgb(220,20, 60)
-    /*on hover change button to this color*/
-}
-.SignUpButton:active{
-    background-color: rgb(220,20, 60);
-    /*on click change button to this color*/
-    transform:translateY(2px)
-    /*on click move button down by 2 pixels*/
 }
 @media screen and (max-width: 640px) {
     /*when width of page is 640 pixels or less*/

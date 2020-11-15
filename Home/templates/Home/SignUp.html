@@ -7,6 +7,7 @@
 {#block css used to link to block element in parent page to this page#}
 {% block body %}
 {#start of body elements#}
+{%load crispy_forms_tags %}
     <div class="Container">
         {# create div class called container #}
         <h1 align = "center">{% block title %}Signup{% endblock %}</h1>
@@ -21,20 +22,11 @@
                 {#this is a csrf_token which securely collects the information submitted in the form#}
                 <table border="0">
                   {#start of table with invisible border#}
-                    <tr><p>
-                        {% for field in form%}
-                            <br>{{field.label_tag}}
-                            <br>{{ field }}
-                        {% endfor %}
-                        </p>
-                        {%for field in form%}
-                            {{field.errors}}
-                        {% endfor %}
-                        {{ form.non_field_errors }}
-                        {#this displays all of the errors that will display in the form#}
+                    <tr>
+                        {{ form | crispy}}
                         <td>
                           {#start of column#}
-                        <button type="submit" class=SignUpButton>Sign Up</button>
+                        <button type="submit" class="btn btn-success btn-lg">Sign Up</button>
                         {#this is the signupbutton#}</td>
                     </tr>
                     {#end of row#}

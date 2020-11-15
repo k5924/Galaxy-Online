@@ -23,7 +23,7 @@
                     {# create first row for table #}
                     <td>
                         {# create first column for table #}
-                        <a class="button" href = "{% url 'admin:index' %}">Admin</a>
+                        <a type = "button" class="btn btn-primary btn.lg" href = "{% url 'admin:index' %}">Admin</a>
                         {#create a button that links to the admin page. the url admin:index#}
                         {#is used to identify the admin login page as it isnt a physical file#}
                         {#opening and closing of the "a" tag shows the start and end of the linked button#}
@@ -33,7 +33,7 @@
                     {# create blank column for table #}
                     <td>
                         {#open tag for column of table#}
-                        <a class="button" href = "{% url 'Login' %}">Student</a>
+                        <a type = "button" class="btn btn-primary btn.lg" href = "{% url 'Login' %}">Student</a>
                         {#create a button that links to the login page. the url login#}
                         {#links the button to the function in view called Login to display#}
                         {#the relevant page. the opening and closing of the "a" tag shows the start and end#}
@@ -49,5 +49,4 @@
     </div>
     {#end tag for div#}
 {% endblock %}
-{#end of body elements#} 
- 
+{#end of body elements#}
