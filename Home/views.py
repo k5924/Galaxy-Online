@@ -29,8 +29,7 @@ def update(request):
         origin = repo.remotes.origin
         origin.pull()
         return HttpResponse("Updated code on PythonAnywhere")
-    else:
-        return HttpResponse("Couldn't update code on PythonAnywhere")
+    return HttpResponse("Couldn't update code on PythonAnywhere")
 
 
 def Index(request):
