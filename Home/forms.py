@@ -63,10 +63,10 @@ class RegisterForm(UserCreationForm):
         elif "@hfed.net" not in email:
             raise forms.ValidationError("This web app only allows hfed users")
             # raise a validation error if the user doenst have @hfed.net in their eail
-        elif (any(char.isdigit() for char in first_name)) == True:
+        elif (any(char.isdigit() for char in first_name)) is True:
             raise forms.ValidationError("Remove the number from your first name")
             # raise a validation error if the firstname has a number in it
-        elif (any(char.isdigit() for char in last_name)) == True:
+        elif (any(char.isdigit() for char in last_name)) is True:
             raise forms.ValidationError("Remove the number from your last name")
             # raise a validation error if the last name has a number in it
         return cleaned_data
