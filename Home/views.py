@@ -9,15 +9,11 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, HttpResponse
 # this imports HttpResponseRedirect to redirect the user to a specific url
 from django.shortcuts import get_object_or_404, render, redirect
-'''
-this imports get_object_or_404, render and redirect. get_object_or_404 will get an object from the database
-or display an error page. render will render a specific page with any contextual values like a form
-'''
+'''this imports get_object_or_404, render and redirect. get_object_or_404 will get an object from the database
+or display an error page. render will render a specific page with any contextual values like a form'''
 from django.db.models import Q
-'''
-this imports q from a predefined django model to query the database from a form filled on a html page.
-this will  allow me to filter queries with keyword arguements specified by the user.
-'''
+'''this imports q from a predefined django model to query the database from a form filled on a html page.
+this will  allow me to filter queries with keyword arguements specified by the user.'''
 import git
 from django.views.decorators.csrf import csrf_exempt
 
