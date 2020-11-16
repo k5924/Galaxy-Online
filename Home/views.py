@@ -274,17 +274,17 @@ def LikePost(request):
     # creates function labeled LikePost with parameter request
     post = get_object_or_404(Post_model, id=request.POST.get('post_id'))
     # get post that is being liked by the user
-    is_liked = False
+    _isLiked = False
     # is_liked is initially false
     if post.likes.filter(id=request.user.id).exists():
         # if the user already likes the post
         post.likes.remove(request.user)
         # remove the user from the posts likes
-        is_liked = False
+        _isLiked = False
     else:
         post.likes.add(request.user)
         # add user to the posts likes
-        is_liked = True
+        _isLiked = True
         # update boolean value
     return HttpResponseRedirect(post.get_absolute_url())
     # refresh the page with the post that the user is on
