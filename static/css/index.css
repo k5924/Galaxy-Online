@@ -1,4 +1,6 @@
 .Container {
+    border: 2px solid gray;
+    border-radius: 5px;
     margin: auto;
     /* this makes the margin of the container automatically adjust */
     margin-top: 120px;
