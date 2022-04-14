@@ -11,9 +11,14 @@
 <pre><code>pip install django</code></pre>
 >To run the website use
 <pre><code>python manage.py runserver</pre></code>
+
 ## TODO List
 <ul><li>Fix likes and comments
 <li>Improve design of user interface</ul>
+
+## Documentation
+[Link to PDF containing documentation](https://github.com/k5924/Galaxy-Online/tree/master/NEA(documentation)/NEA.pdf)
+
 <h3 align="left">Languages and Tools:</h3>
 <p align="left"><a href="https://www.w3schools.com/css/" target="_blank"><img 
 src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg"
